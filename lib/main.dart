@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:testapp/screens/editar.dart';
 import 'package:testapp/screens/listado.dart';
+import 'package:testapp/screens/startPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,21 +12,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'SQLite Demo',
-      theme: ThemeData(primarySwatch: Colors.lime),
-      home: const MiApp(),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: ('inter'),
+        useMaterial3: true,
+      ),
+      home: const StartPage(),
     );
-  }
-}
-
-class MiApp extends StatelessWidget {
-  const MiApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(initialRoute: "/", routes: {
-      "/": (context) => Listado(),
-      "/editar": (context) => Editar()
-    });
   }
 }
