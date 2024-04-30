@@ -7,6 +7,8 @@ class Editar extends StatelessWidget {
   final tituloController = TextEditingController();
   final descripcionController = TextEditingController();
 
+  Editar({super.key});
+
   get value => null;
 
   @override
