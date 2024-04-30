@@ -5,6 +5,8 @@ import 'package:testapp/models/note.dart';
 import 'package:testapp/utils/db_helper.dart';
 
 class Listado extends StatelessWidget {
+  const Listado({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,16 +20,18 @@ class Listado extends StatelessWidget {
                 arguments: Note(id: 0, title: "", description: ""));
           },
         ),
-        body: Container(child: Lista()));
+        body: const Lista());
   }
 }
 
 class Lista extends StatefulWidget {
+  const Lista({super.key});
+
   @override
-  _MiLista createState() => _MiLista();
+  MiLista createState() => MiLista();
 }
 
-class _MiLista extends State<Lista> {
+class MiLista extends State<Lista> {
   List<Note> notes = [];
 
   @override
