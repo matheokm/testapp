@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/screens/editar.dart';
-import 'package:testapp/screens/listado.dart';
 import 'package:testapp/screens/startPage.dart';
 
 void main() {
