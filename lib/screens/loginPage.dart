@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/screens/listado.dart';
+import 'package:testapp/screens/indexPage.dart';
 
 class LoginPage extends StatelessWidget {
-  const LoginPage({Key? key}) : super(key: key);
+  const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +91,7 @@ class LoginPage extends StatelessWidget {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const Listado()));
+                              builder: (context) => const IndexPage()));
                     },
                     child: Container(
                       height: 55,
