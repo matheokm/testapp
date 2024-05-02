@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/screens/indexPage.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -88,10 +87,7 @@ class LoginPage extends StatelessWidget {
                   ),
                   GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const IndexPage()));
+                      Navigator.pushNamed(context, 'index');
                     },
                     child: Container(
                       height: 55,
