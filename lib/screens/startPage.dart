@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/screens/loginPage.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -27,8 +26,7 @@ class StartPage extends StatelessWidget {
           const SizedBox(height: 25),
           GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => const LoginPage()));
+              Navigator.pushNamed(context, 'login');
             },
             child: Container(
               height: 55,
