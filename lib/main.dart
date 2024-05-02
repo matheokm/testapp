@@ -4,6 +4,7 @@ import 'package:testapp/screens/indexPage.dart';
 import 'package:testapp/screens/listado.dart';
 import 'package:testapp/screens/loginPage.dart';
 import 'package:testapp/screens/startPage.dart';
+import 'package:testapp/screens/test/customize_drawer_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
+  //This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,4 +34,16 @@ class MyApp extends StatelessWidget {
           // '/other': (context) => OtherPage(),
         });
   }
+
+  // @override
+  // Widget build(BuildContext context) {
+  //   return MaterialApp(
+  //     debugShowCheckedModeBanner: false,
+  //     title: 'Flutter Demo',
+  //     theme: ThemeData(
+  //       primarySwatch: Colors.blue,
+  //     ),
+  //     home: const StartPage(),
+  //   );
+  // }
 }
