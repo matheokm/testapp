@@ -6,13 +6,9 @@ class IndexPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('Despacho de combustible'),
-        ),
-        drawer: const MenuWidget(),
-      ),
+    return Scaffold(
+      appBar: AppBar(title: const Text('Despacho de combustible')),
+      drawer: const MenuWidget(),
     );
   }
 }
