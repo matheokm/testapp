@@ -3,80 +3,57 @@ import 'package:flutter/material.dart';
 class MenuWidget extends StatelessWidget {
   const MenuWidget({super.key});
 
+  Widget listTile(
+      IconData icon, String title, String route, BuildContext context) {
+    return ListTile(
+        leading: Icon(icon),
+        title: Text(title),
+        onTap: () {
+          Navigator.pop(context);
+          Navigator.popAndPushNamed(context, route);
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: SingleChildScrollView(
+        padding: EdgeInsets.only(
+            top: MediaQuery.of(context).padding.top, bottom: 24),
         child: Column(
           children: [
-            Column(children: [
-              ListTile(
-                leading: const Icon(Icons.list_alt_rounded),
-                title: const Text('Mis Solicitudes'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Agrega el código para manejar la selección de la opción 1
-                  Navigator.pushNamed(context, 'fuel_request');
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.checklist_rounded),
-                title: const Text('Solicitudes por aprobar'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Agrega el código para manejar la selección de la opción 2
-                  Navigator.pushNamed(context, 'pending_fuel_request');
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.description),
-                title: const Text('Crear solicitud'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Agrega el código para manejar la selección de la opción 3
-                  Navigator.pushNamed(context, 'fuel_request_new');
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.format_list_numbered),
-                title: const Text('Diarios de transferencia'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Agrega el código para manejar la selección de la opción 4
-                  Navigator.pushNamed(context, 'transfer_journals');
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.sync),
-                title: const Text('Sincronizar datos'),
-                onTap: () {
-                  Navigator.pop(context);
-                  // Agrega el código para manejar la selección de la opción 5
-                  Navigator.pushNamed(context, 'data_sync');
-                },
-              ),
-              const Divider(
-                color: Colors.black45,
-              ),
-              ListTile(
-                leading: const Icon(Icons.account_circle),
-                title: const Text('Mi perfil'),
-                onTap: () {
-                  // Agrega el código para manejar la selección de la opción 2
-                  Navigator.pop(context); // Cierra el Drawer
-                  // Navega a la página de inicio
-                  Navigator.pushNamed(context, 'profile');
-                },
-              ),
-              ListTile(
-                leading: const Icon(Icons.logout_outlined),
-                title: const Text('Cerrar sesión'),
-                onTap: () {
-                  // Agrega el código para manejar la selección de la opción 2
-                  Navigator.pushNamed(context, 'login');
-                },
-              )
-            ])
+            DrawerHeader(
+                child: Container(
+                    alignment: Alignment.center,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          'assets/menulogo.png', // Ruta de la imagen
+                          width: 50, // Ancho de la imagen
+                        ),
+                        const SizedBox(
+                            height: 10), // Espacio entre la imagen y el texto
+                        const Text(
+                          'Despacho de combustible', // Texto opcional para el encabezado del Drawer
+                          style: TextStyle(
+                            fontSize: 20,
+                          ),
+                        ),
+                      ],
+                    ))),
+            listTile(Icons.list_alt_rounded, 'Mis Solicitudes', 'fuel_request',
+                context),
+            listTile(Icons.checklist_rounded, 'Solicitudes por aprobar',
+                'pending_fuel_request', context),
+            listTile(Icons.description, 'Crear solicitud', 'fuel_request_new',
+                context),
+            listTile(Icons.format_list_numbered, 'Diarios de transferencia',
+                'transfer_journals', context),
+            listTile(Icons.sync, 'Sincronizar datos', 'data_sync', context),
+            const Divider(color: Colors.black45),
+            listTile(Icons.account_circle, 'Mi perfil', 'profile', context),
+            listTile(Icons.logout_outlined, 'Cerrar sesión', 'login', context)
           ],
         ),
       ),
