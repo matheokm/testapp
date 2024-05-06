@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:testapp/screens/listado.dart';
-import 'package:testapp/screens/loginPage.dart';
-import 'package:testapp/screens/test/favourite_screen.dart';
-import 'package:testapp/screens/test/home_screen.dart';
-import 'package:testapp/screens/test/user_profile_screen.dart';
 
 class MenuWidget extends StatelessWidget {
   const MenuWidget({super.key});
@@ -19,35 +14,45 @@ class MenuWidget extends StatelessWidget {
                 leading: const Icon(Icons.list_alt_rounded),
                 title: const Text('Mis Solicitudes'),
                 onTap: () {
+                  Navigator.pop(context);
                   // Agrega el código para manejar la selección de la opción 1
+                  Navigator.pushNamed(context, 'fuel_request');
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.checklist_rounded),
                 title: const Text('Solicitudes por aprobar'),
                 onTap: () {
+                  Navigator.pop(context);
                   // Agrega el código para manejar la selección de la opción 2
+                  Navigator.pushNamed(context, 'pending_fuel_request');
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.description),
                 title: const Text('Crear solicitud'),
                 onTap: () {
-                  // Agrega el código para manejar la selección de la opción 2
+                  Navigator.pop(context);
+                  // Agrega el código para manejar la selección de la opción 3
+                  Navigator.pushNamed(context, 'fuel_request_new');
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.format_list_numbered),
                 title: const Text('Diarios de transferencia'),
                 onTap: () {
-                  // Agrega el código para manejar la selección de la opción 2
+                  Navigator.pop(context);
+                  // Agrega el código para manejar la selección de la opción 4
+                  Navigator.pushNamed(context, 'transfer_journals');
                 },
               ),
               ListTile(
                 leading: const Icon(Icons.sync),
                 title: const Text('Sincronizar datos'),
                 onTap: () {
-                  // Agrega el código para manejar la selección de la opción 2
+                  Navigator.pop(context);
+                  // Agrega el código para manejar la selección de la opción 5
+                  Navigator.pushNamed(context, 'data_sync');
                 },
               ),
               const Divider(
@@ -60,10 +65,7 @@ class MenuWidget extends StatelessWidget {
                   // Agrega el código para manejar la selección de la opción 2
                   Navigator.pop(context); // Cierra el Drawer
                   // Navega a la página de inicio
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Listado()),
-                  );
+                  Navigator.pushNamed(context, 'profile');
                 },
               ),
               ListTile(
@@ -71,10 +73,7 @@ class MenuWidget extends StatelessWidget {
                 title: const Text('Cerrar sesión'),
                 onTap: () {
                   // Agrega el código para manejar la selección de la opción 2
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const LoginPage()));
+                  Navigator.pushNamed(context, 'login');
                 },
               )
             ])
