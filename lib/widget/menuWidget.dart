@@ -28,17 +28,11 @@ class MenuWidget extends StatelessWidget {
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Image.asset(
-                          'assets/menulogo.png', // Ruta de la imagen
-                          width: 50, // Ancho de la imagen
-                        ),
-                        const SizedBox(
-                            height: 10), // Espacio entre la imagen y el texto
+                        Image.asset('assets/menulogo.png', width: 50),
+                        const SizedBox(height: 10),
                         const Text(
-                          'Despacho de combustible', // Texto opcional para el encabezado del Drawer
-                          style: TextStyle(
-                            fontSize: 20,
-                          ),
+                          'Despacho de combustible',
+                          style: TextStyle(fontSize: 20),
                         ),
                       ],
                     ))),
