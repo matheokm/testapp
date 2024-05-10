@@ -23,6 +23,9 @@ class MenuWidget extends StatelessWidget {
         child: Column(
           children: [
             DrawerHeader(
+              decoration: const BoxDecoration(
+               color: Color.fromARGB(255, 109, 108, 108),
+              ),
                 child: Container(
                     alignment: Alignment.center,
                     child: Column(
@@ -32,7 +35,8 @@ class MenuWidget extends StatelessWidget {
                         const SizedBox(height: 10),
                         const Text(
                           'Despacho de combustible',
-                          style: TextStyle(fontSize: 20),
+                          style: TextStyle(fontSize: 20, color:
+                             Color.fromARGB(255, 223, 221, 221)),
                         ),
                       ],
                     ))),
