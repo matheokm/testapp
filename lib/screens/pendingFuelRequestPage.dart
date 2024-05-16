@@ -11,14 +11,14 @@ class PendingFuelRequestPage extends StatelessWidget {
         'ID': '91',
         'Fecha': '28/03/24 08:06',
         'Usuario': 'jvillafuerte',
-        'Proyecto':'CBMTU',
+        'Proyecto': 'CBMTU',
         'Centro': '83104',
         'Localidad': 'Test',
         'CantSolicitada': '10.02',
         'TipoDespacho': 'tanquero',
         'CódigoDespacho': 'A60UPV',
-        'Estado':'Test',
-        'Aprobacion':{
+        'Estado': 'Test',
+        'Aprobacion': {
           'supervisor': false,
           'warehouse': false,
           'dispatcher': false,
@@ -29,14 +29,13 @@ class PendingFuelRequestPage extends StatelessWidget {
         'ID': '92',
         'Fecha': '28/03/24 08:06',
         'Usuario': 'jvillafuerte',
-        'Proyecto':'CBMTU',
+        'Proyecto': 'CBMTU',
         'Centro': '83104',
         'Localidad': 'Test',
         'CantSolicitada': '10.02',
         'TipoDespacho': 'tanquero',
         'CódigoDespacho': 'A60UPV',
-        'Estado':'Test',
-
+        'Estado': 'Test',
       },
       // Agrega más solicitudes aquí
     ];
@@ -44,8 +43,7 @@ class PendingFuelRequestPage extends StatelessWidget {
       appBar: AppBar(
         title: const Align(
             alignment: Alignment.bottomLeft,
-            child: Text('Solicitudes pendientes')
-        ),
+            child: Text('Solicitudes pendientes')),
         backgroundColor: Color.fromARGB(255, 109, 108, 108),
         foregroundColor: Color.fromARGB(255, 223, 221, 221),
       ),
@@ -74,7 +72,9 @@ class PendingFuelRequestPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  const Divider(height: 0.05,), // Línea de separación
+                  const Divider(
+                    height: 0.05,
+                  ), // Línea de separación
                   ListTile(
                     subtitle: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,25 +85,39 @@ class PendingFuelRequestPage extends StatelessWidget {
                             const Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('Usuario:', style: TextStyle(fontSize: 12)),
-                                Text('Proyección consumo:', style: TextStyle(fontSize: 12)),
-                                Text('Centro de costos:', style: TextStyle(fontSize: 12)),
-                                Text('Localición:', style: TextStyle(fontSize: 12)),
-                                Text('Cant. solicitada (gal):', style: TextStyle(fontSize: 12)),
-                                Text('Tipo de despacho:', style: TextStyle(fontSize: 12)),
-                                Text('Código despacho:', style: TextStyle(fontSize: 12))
+                                Text('Usuario:',
+                                    style: TextStyle(fontSize: 12)),
+                                Text('Proyección consumo:',
+                                    style: TextStyle(fontSize: 12)),
+                                Text('Centro de costos:',
+                                    style: TextStyle(fontSize: 12)),
+                                Text('Localición:',
+                                    style: TextStyle(fontSize: 12)),
+                                Text('Cant. solicitada (gal):',
+                                    style: TextStyle(fontSize: 12)),
+                                Text('Tipo de despacho:',
+                                    style: TextStyle(fontSize: 12)),
+                                Text('Código despacho:',
+                                    style: TextStyle(fontSize: 12))
                               ],
                             ),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text('${solicitudes[index]['Usuario']}', style: const TextStyle(fontSize: 12)),
-                                Text('${solicitudes[index]['Proyecto']}', style: const TextStyle(fontSize: 12)),
-                                Text('${solicitudes[index]['Centro']}', style: const TextStyle(fontSize: 12)),
-                                Text('${solicitudes[index]['Localidad']}', style: const TextStyle(fontSize: 12)),
-                                Text('${solicitudes[index]['CantSolicitada']}', style: const TextStyle(fontSize: 12)),
-                                Text('${solicitudes[index]['TipoDespacho']}', style: const TextStyle(fontSize: 12)),
-                                Text('${solicitudes[index]['CódigoDespacho']}', style: const TextStyle(fontSize: 12))
+                                Text('${solicitudes[index]['Usuario']}',
+                                    style: const TextStyle(fontSize: 12)),
+                                Text('${solicitudes[index]['Proyecto']}',
+                                    style: const TextStyle(fontSize: 12)),
+                                Text('${solicitudes[index]['Centro']}',
+                                    style: const TextStyle(fontSize: 12)),
+                                Text('${solicitudes[index]['Localidad']}',
+                                    style: const TextStyle(fontSize: 12)),
+                                Text('${solicitudes[index]['CantSolicitada']}',
+                                    style: const TextStyle(fontSize: 12)),
+                                Text('${solicitudes[index]['TipoDespacho']}',
+                                    style: const TextStyle(fontSize: 12)),
+                                Text('${solicitudes[index]['CódigoDespacho']}',
+                                    style: const TextStyle(fontSize: 12))
                               ],
                             )
                           ],
@@ -114,43 +128,54 @@ class PendingFuelRequestPage extends StatelessWidget {
                             Expanded(
                               child: TextButton(
                                   style: TextButton.styleFrom(
-                                    backgroundColor: const Color.fromARGB(255, 109, 108, 108),
-                                    foregroundColor: const Color.fromARGB(255, 223, 221, 221),
+                                    backgroundColor: const Color.fromARGB(
+                                        255, 109, 108, 108),
+                                    foregroundColor: const Color.fromARGB(
+                                        255, 223, 221, 221),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5.0), // 5% del tamaño del botón
+                                      borderRadius: BorderRadius.circular(
+                                          5.0), // 5% del tamaño del botón
                                     ),
                                   ),
-                                  onPressed: (){},
-                                  child: const Text('Ver detalle', style: TextStyle(fontSize: 13))
-                              ),
+                                  onPressed: () {},
+                                  child: const Text('Ver detalle',
+                                      style: TextStyle(fontSize: 13))),
                             ),
-                            const SizedBox(width: 10,),
+                            const SizedBox(
+                              width: 10,
+                            ),
                             Expanded(
                               child: TextButton(
                                   style: TextButton.styleFrom(
                                     backgroundColor: Colors.green,
-                                    foregroundColor: const Color.fromARGB(255, 223, 221, 221),
+                                    foregroundColor: const Color.fromARGB(
+                                        255, 223, 221, 221),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5.0), // 5% del tamaño del botón
+                                      borderRadius: BorderRadius.circular(
+                                          5.0), // 5% del tamaño del botón
                                     ),
                                   ),
-                                  onPressed: (){},
-                                  child: const Text('Aprobar', style: TextStyle(fontSize: 13))
-                              ),
+                                  onPressed: () {},
+                                  child: const Text('Aprobar',
+                                      style: TextStyle(fontSize: 13))),
                             ),
-                            const SizedBox(width: 10,),
+                            const SizedBox(
+                              width: 10,
+                            ),
                             Expanded(
                               child: TextButton(
                                   style: TextButton.styleFrom(
                                     backgroundColor: Colors.red,
-                                    foregroundColor: const Color.fromARGB(255, 223, 221, 221),
+                                    foregroundColor: const Color.fromARGB(
+                                        255, 223, 221, 221),
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(5.0), // 5% del tamaño del botón
+                                      borderRadius: BorderRadius.circular(
+                                          5.0), // 5% del tamaño del botón
                                     ),
                                   ),
-                                  onPressed: (){},
-                                  child: const Text('Rechazar', style: TextStyle(fontSize: 13))
-                              ),
+                                  onPressed: () {},
+                                  child: const Text('Rechazar',
+                                      style: TextStyle(fontSize: 13))),
                             )
                           ],
                         )
@@ -164,7 +189,6 @@ class PendingFuelRequestPage extends StatelessWidget {
         ),
       ),
       drawer: const MenuWidget(),
-
     );
   }
 }
