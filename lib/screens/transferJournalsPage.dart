@@ -45,8 +45,8 @@ class TransferJournalsPage extends StatelessWidget {
           title: const Align(
               alignment: Alignment.bottomLeft,
               child: Text('Diarios de transferencia')),
-          backgroundColor: Color.fromARGB(255, 109, 108, 108),
-          foregroundColor: Color.fromARGB(255, 223, 221, 221),
+          backgroundColor: const Color.fromARGB(255, 109, 108, 108),
+          foregroundColor: const Color.fromARGB(255, 223, 221, 221),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -90,22 +90,34 @@ class TransferJournalsPage extends StatelessWidget {
                               const Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text('Usuario: ', style: TextStyle(fontSize: 12)),
-                                  Text('Tipo combustible: ', style: TextStyle(fontSize: 12)),
-                                  Text('Cantidad solicitada (gal): ', style: TextStyle(fontSize: 12)),
-                                  Text('Bodega origen: ', style: TextStyle(fontSize: 12)),
-                                  Text('Bodega destino: ', style: TextStyle(fontSize: 12)),
-                                  Text('Diario Dynamics: ', style: TextStyle(fontSize: 12)),
-                                  Text('Descripción: ', style: TextStyle(fontSize: 12)),
+                                  Text('Usuario: ',
+                                      style: TextStyle(fontSize: 12)),
+                                  Text('Tipo combustible: ',
+                                      style: TextStyle(fontSize: 12)),
+                                  Text('Cantidad solicitada (gal): ',
+                                      style: TextStyle(fontSize: 12)),
+                                  Text('Bodega origen: ',
+                                      style: TextStyle(fontSize: 12)),
+                                  Text('Bodega destino: ',
+                                      style: TextStyle(fontSize: 12)),
+                                  Text('Diario Dynamics: ',
+                                      style: TextStyle(fontSize: 12)),
+                                  Text('Descripción: ',
+                                      style: TextStyle(fontSize: 12)),
                                 ],
                               ),
                               Flexible(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('${solicitudes[index]['Usuario']}', style: const TextStyle(fontSize: 12)),
-                                    Text('${solicitudes[index]['TipoCombustible']}', style: const TextStyle(fontSize: 12)),
-                                    Text('${solicitudes[index]['CantSolicitada']}', style: const TextStyle(fontSize: 12)),
+                                    Text('${solicitudes[index]['Usuario']}',
+                                        style: const TextStyle(fontSize: 12)),
+                                    Text(
+                                        '${solicitudes[index]['TipoCombustible']}',
+                                        style: const TextStyle(fontSize: 12)),
+                                    Text(
+                                        '${solicitudes[index]['CantSolicitada']}',
+                                        style: const TextStyle(fontSize: 12)),
                                     Text(
                                       '${solicitudes[index]['BodOrigen']}',
                                       style: const TextStyle(fontSize: 12),
@@ -116,8 +128,10 @@ class TransferJournalsPage extends StatelessWidget {
                                       style: const TextStyle(fontSize: 12),
                                       overflow: TextOverflow.ellipsis,
                                     ),
-                                    Text('${solicitudes[index]['Dynamics']}', style: const TextStyle(fontSize: 12)),
-                                    Text('${solicitudes[index]['Descripcion']}', style: const TextStyle(fontSize: 12))
+                                    Text('${solicitudes[index]['Dynamics']}',
+                                        style: const TextStyle(fontSize: 12)),
+                                    Text('${solicitudes[index]['Descripcion']}',
+                                        style: const TextStyle(fontSize: 12))
                                   ],
                                 ),
                               )
@@ -138,8 +152,8 @@ class TransferJournalsPage extends StatelessWidget {
             // Acción al presionar el botón
             Navigator.popAndPushNamed(context, 'transfer_journals_new');
           },
-          backgroundColor: Color.fromARGB(255, 109, 108, 108),
-          foregroundColor: Color.fromARGB(255, 223, 221, 221),
+          backgroundColor: const Color.fromARGB(255, 109, 108, 108),
+          foregroundColor: const Color.fromARGB(255, 223, 221, 221),
           child: const Icon(Icons.add),
         ));
   }
