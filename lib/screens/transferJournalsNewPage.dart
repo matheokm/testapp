@@ -18,8 +18,8 @@ class TransferJournalsNewPage extends StatelessWidget {
         title: const Align(
             alignment: Alignment.bottomLeft,
             child: Text('Diario de transferencia')),
-        backgroundColor: Color.fromARGB(255, 109, 108, 108),
-        foregroundColor: Color.fromARGB(255, 223, 221, 221),
+        backgroundColor: const Color.fromARGB(255, 109, 108, 108),
+        foregroundColor: const Color.fromARGB(255, 223, 221, 221),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -39,7 +39,7 @@ class TransferJournalsNewPage extends StatelessWidget {
                   ),
                 ),
                 items:
-                <String>['Gasolina', 'Diesel', 'Gas'].map((String value) {
+                    <String>['Gasolina', 'Diesel', 'Gas'].map((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
                     child: Text(value),
@@ -140,14 +140,13 @@ class TransferJournalsNewPage extends StatelessWidget {
                     )),
                 maxLines: 2,
               ),
-
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor: const Color.fromARGB(255, 109, 108, 108),
                   foregroundColor: const Color.fromARGB(255, 223, 221, 221),
                   shape: RoundedRectangleBorder(
                     borderRadius:
-                    BorderRadius.circular(5.0), // 5% del tamaño del botón
+                        BorderRadius.circular(5.0), // 5% del tamaño del botón
                   ),
                 ),
                 onPressed: () {

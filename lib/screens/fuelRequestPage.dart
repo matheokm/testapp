@@ -61,8 +61,8 @@ class FuelRequestPage extends StatelessWidget {
       appBar: AppBar(
         title: const Align(
             alignment: Alignment.bottomLeft, child: Text('Mis solicitudes')),
-        backgroundColor: Color.fromARGB(255, 109, 108, 108),
-        foregroundColor: Color.fromARGB(255, 223, 221, 221),
+        backgroundColor: const Color.fromARGB(255, 109, 108, 108),
+        foregroundColor: const Color.fromARGB(255, 223, 221, 221),
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -181,8 +181,8 @@ class FuelRequestPage extends StatelessWidget {
           // Acción al presionar el botón
           Navigator.popAndPushNamed(context, 'fuel_request_new');
         },
-        backgroundColor: Color.fromARGB(255, 109, 108, 108),
-        foregroundColor: Color.fromARGB(255, 223, 221, 221),
+        backgroundColor: const Color.fromARGB(255, 109, 108, 108),
+        foregroundColor: const Color.fromARGB(255, 223, 221, 221),
         child: const Icon(Icons.add),
       ),
     );
