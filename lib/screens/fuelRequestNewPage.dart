@@ -1,4 +1,8 @@
+// ignore: file_names
 import 'package:flutter/material.dart';
+import 'package:testapp/widget/autocompleteWidget.dart';
+import 'package:testapp/widget/camaraWidget.dart';
+import 'package:testapp/widget/dropdownWidget.dart';
 import 'package:testapp/widget/menuWidget.dart';
 
 class FuelRequestNewPage extends StatelessWidget {
@@ -6,30 +10,6 @@ class FuelRequestNewPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<String> equipos = [
-      'cbmtu',
-      'cbmtu-01',
-      'cbmtu-11',
-      'cbmtu-21',
-      'cbmtu-31'
-    ];
-    final List<String> centroCostos = [
-      '83104 - combustible',
-      '102104 - combustible',
-      '21104 - combustible'
-    ];
-    final List<String> tipoCombustible = [
-      'Diesel filtrado',
-      'Diesel 2 petrolero',
-      'Diesel premium'
-    ];
-    final List<String> tipoDespacho = [
-      'Gasolinera',
-      'Tanque estacionario',
-      'Tanquero',
-      'Tanque almacenamiento en campo'
-    ];
-
     return Scaffold(
       appBar: AppBar(
         title: const Align(
@@ -38,162 +18,177 @@ class FuelRequestNewPage extends StatelessWidget {
         backgroundColor: const Color.fromARGB(255, 109, 108, 108),
         foregroundColor: const Color.fromARGB(255, 223, 221, 221),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Form(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: <Widget>[
-              Autocomplete<String>(
-                optionsBuilder: (TextEditingValue textEditingValue) {
-                  if (textEditingValue.text == '') {
-                    return const Iterable<String>.empty();
-                  }
-                  return equipos.where((String option) {
-                    return option.contains(textEditingValue.text.toLowerCase());
-                  });
-                },
-                onSelected: (String selection) {
-                  print('Has seleccionado: $selection');
-                },
-                fieldViewBuilder: (BuildContext context,
-                    TextEditingController textEditingController,
-                    FocusNode focusNode,
-                    VoidCallback onFieldSubmitted) {
-                  return TextFormField(
-                    controller: textEditingController,
-                    focusNode: focusNode,
-                    onFieldSubmitted: (String value) {
-                      onFieldSubmitted();
+      body: const MyScrollView(),
+      drawer: const MenuWidget(),
+    );
+  }
+}
+
+class MyScrollView extends StatelessWidget {
+  const MyScrollView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Future<List<String>> fetchConsumers(String query) async {
+      List<String> equipos = [
+        'cbmtu',
+        'abmtu-01',
+        'bbmtu-11',
+        'dbmtu-21',
+        'ebmtu-31'
+      ];
+      // Simulando una llamada a una API con un retraso.
+      await Future.delayed(const Duration(seconds: 1));
+      // Retorna una lista de sugerencias basadas en el query.
+      return equipos
+          .where((equipo) => equipo.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+
+    Future<List<String>> fetchCenterCost(String query) async {
+      List<String> centroCostos = [
+        '83104 - combustible',
+        '102104 - combustible',
+        '21104 - combustible'
+      ];
+      // Simulando una llamada a una API con un retraso.
+      await Future.delayed(const Duration(seconds: 1));
+      // Retorna una lista de sugerencias basadas en el query.
+      return centroCostos
+          .where((centroCostos) =>
+              centroCostos.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+
+    Future<List<String>> fetchFuelType(String query) async {
+      List<String> tipoCombustible = [
+        'Diesel filtrado',
+        'Diesel 2 petrolero',
+        'Diesel premium'
+      ];
+      // Simulando una llamada a una API con un retraso.
+      await Future.delayed(const Duration(seconds: 1));
+      // Retorna una lista de sugerencias basadas en el query.
+      return tipoCombustible
+          .where((tipoCombustible) =>
+              tipoCombustible.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+
+    Future<List<String>> fetchDispatcherType(String query) async {
+      List<String> tipoDespacho = [
+        'Gasolinera',
+        'Tanque estacionario',
+        'Tanquero',
+        'Tanque almacenamiento en campo'
+      ];
+      // Simulando una llamada a una API con un retraso.
+      await Future.delayed(const Duration(seconds: 1));
+      // Retorna una lista de sugerencias basadas en el query.
+      return tipoDespacho
+          .where((tipoDespacho) =>
+              tipoDespacho.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+    }
+
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(8.0),
+      child: Form(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: <Widget>[
+            const SizedBox(height: 20),
+            AutocompleteWidget(
+              labelWidget: "Equipos",
+              fetchSuggestions: fetchConsumers,
+              showQRScanner: true,
+            ),
+            const SizedBox(height: 20),
+            AutocompleteWidget(
+              labelWidget: "Centro de costos",
+              fetchSuggestions: fetchCenterCost,
+              showQRScanner: false,
+            ),
+            const SizedBox(height: 20),
+            FutureBuilder<List<String>>(
+              future: fetchFuelType(''),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Text('No data available');
+                } else {
+                  return DropdownWidget(
+                    items: snapshot.data!,
+                    onChanged: (value) {
+                      print('Selected dispatcher type: $value');
                     },
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      label: Text(
-                        'Equipos',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 109, 108, 108),
-                        ),
-                      ),
-                      suffixIcon: Icon(Icons.qr_code_scanner),
-                    ),
+                    hint: 'Tipo de combustible',
                   );
-                },
-              ),
-              Autocomplete<String>(
-                optionsBuilder: (TextEditingValue textEditingValue) {
-                  if (textEditingValue.text == '') {
-                    return const Iterable<String>.empty();
-                  }
-                  return centroCostos.where((String option) {
-                    return option.contains(textEditingValue.text.toLowerCase());
-                  });
-                },
-                onSelected: (String selection) {
-                  print('Has seleccionado: $selection');
-                },
-                fieldViewBuilder: (BuildContext context,
-                    TextEditingController textEditingController,
-                    FocusNode focusNode,
-                    VoidCallback onFieldSubmitted) {
-                  return TextFormField(
-                    controller: textEditingController,
-                    focusNode: focusNode,
-                    onFieldSubmitted: (String value) {
-                      onFieldSubmitted();
+                }
+              },
+            ),
+            const SizedBox(height: 20),
+            FutureBuilder<List<String>>(
+              future: fetchDispatcherType(''),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Text('No data available');
+                } else {
+                  return DropdownWidget(
+                    items: snapshot.data!,
+                    onChanged: (value) {
+                      print('Selected dispatcher type: $value');
                     },
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(),
-                      label: Text(
-                        'Centro de costos',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 109, 108, 108),
-                        ),
-                      ),
-                    ),
+                    hint: 'Tipo de despacho',
                   );
-                },
-              ),
-              const TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    label: Text(
-                      'Cantidad solicitada (gal)',
-                      style: TextStyle(
+                }
+              },
+            ),
+            const SizedBox(height: 20),
+            const Row(
+              children: [
+                Expanded(
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Cantidad solicitada (gal)',
+                      labelStyle: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 109, 108, 108),
                       ),
-                    )),
-              ),
-              DropdownButtonFormField<String>(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  label: Text(
-                    'Tipo de combustible',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 109, 108, 108),
                     ),
                   ),
                 ),
-                items: tipoCombustible.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                onChanged: (_) {},
-              ),
-              DropdownButtonFormField<String>(
-                decoration: const InputDecoration(
-                  border: OutlineInputBorder(),
-                  label: Text(
-                    'Tipo de despacho',
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: Color.fromARGB(255, 109, 108, 108),
-                    ),
-                  ),
+                SizedBox(width: 10), // Espacio entre los widgets
+                CameraWidget(), // Aquí se coloca el widget de la cámara
+              ],
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(140, 60),
+                backgroundColor: const Color.fromARGB(255, 109, 108, 108),
+                foregroundColor: const Color.fromARGB(255, 223, 221, 221),
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(5.0), // 5% del tamaño del botón
                 ),
-                items: tipoDespacho.map((String value) {
-                  return DropdownMenuItem<String>(
-                    value: value,
-                    child: Text(value),
-                  );
-                }).toList(),
-                onChanged: (_) {},
               ),
-              const TextField(
-                decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    label: Text(
-                      'Locación',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 109, 108, 108),
-                      ),
-                    )),
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color.fromARGB(255, 109, 108, 108),
-                  foregroundColor: const Color.fromARGB(255, 223, 221, 221),
-                  shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(5.0), // 5% del tamaño del botón
-                  ),
-                ),
-                onPressed: () {
-                  // Guardar la información
-                },
-                child: const Text('Guardar'),
-              ),
-            ],
-          ),
+              onPressed: () {
+                // Guardar la información
+              },
+              child: const Text('Guardar'),
+            )
+          ],
         ),
       ),
-      drawer: const MenuWidget(),
     );
   }
 }
