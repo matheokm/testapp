@@ -114,7 +114,8 @@ class MyScrollView extends StatelessWidget {
               future: fetchFuelType(''),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
+                  return const CircularProgressIndicator(
+                      color: Color.fromARGB(255, 109, 108, 108));
                 } else if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
@@ -135,7 +136,8 @@ class MyScrollView extends StatelessWidget {
               future: fetchDispatcherType(''),
               builder: (context, snapshot) {
                 if (snapshot.connectionState == ConnectionState.waiting) {
-                  return const CircularProgressIndicator();
+                  return const CircularProgressIndicator(
+                      color: Color.fromARGB(255, 109, 108, 108));
                 } else if (snapshot.hasError) {
                   return Text('Error: ${snapshot.error}');
                 } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
