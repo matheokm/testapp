@@ -23,9 +23,9 @@ class MenuWidget extends StatelessWidget {
         child: Column(
           children: [
             DrawerHeader(
-              decoration: const BoxDecoration(
-               color: Color.fromARGB(255, 109, 108, 108),
-              ),
+                decoration: const BoxDecoration(
+                  color: Color.fromARGB(255, 109, 108, 108),
+                ),
                 child: Container(
                     alignment: Alignment.center,
                     child: Column(
@@ -35,16 +35,17 @@ class MenuWidget extends StatelessWidget {
                         const SizedBox(height: 10),
                         const Text(
                           'Despacho de combustible',
-                          style: TextStyle(fontSize: 20, color:
-                             Color.fromARGB(255, 223, 221, 221)),
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Color.fromARGB(255, 223, 221, 221)),
                         ),
                       ],
                     ))),
-            listTile(Icons.list_alt_rounded, 'Mis Solicitudes', 'fuel_request',
+            listTile(Icons.description, 'Crear solicitud', 'fuel_request_new',
                 context),
             listTile(Icons.checklist_rounded, 'Solicitudes por aprobar',
                 'pending_fuel_request', context),
-            listTile(Icons.description, 'Crear solicitud', 'fuel_request_new',
+            listTile(Icons.list_alt_rounded, 'Mis Solicitudes', 'fuel_request',
                 context),
             listTile(Icons.format_list_numbered, 'Diarios de transferencia',
                 'transfer_journals', context),
