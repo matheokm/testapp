@@ -10,7 +10,7 @@ class ProfilePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Mi Perfil'),
       ),
-      drawer: const MenuWidget(),
+      drawer: MenuWidget(),
     );
   }
 }

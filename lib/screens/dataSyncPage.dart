@@ -10,7 +10,7 @@ class DataSyncPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Sincronización de datos'),
       ),
-      drawer: const MenuWidget(),
+      drawer: MenuWidget(),
     );
   }
 }

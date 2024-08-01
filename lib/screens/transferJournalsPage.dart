@@ -146,7 +146,7 @@ class TransferJournalsPage extends StatelessWidget {
             },
           ),
         ),
-        drawer: const MenuWidget(),
+        drawer: MenuWidget(),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
             // Acción al presionar el botón

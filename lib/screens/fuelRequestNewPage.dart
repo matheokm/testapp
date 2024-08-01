@@ -19,7 +19,7 @@ class FuelRequestNewPage extends StatelessWidget {
         foregroundColor: const Color.fromARGB(255, 223, 221, 221),
       ),
       body: const MyScrollView(),
-      drawer: const MenuWidget(),
+      drawer: MenuWidget(),
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/screens/fuelRequestNewPage.dart';
 import 'package:testapp/widget/menuWidget.dart';
 
 class FuelRequestPage extends StatelessWidget {
@@ -175,11 +176,14 @@ class FuelRequestPage extends StatelessWidget {
           },
         ),
       ),
-      drawer: const MenuWidget(),
+      drawer: MenuWidget(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           // Acción al presionar el botón
-          Navigator.popAndPushNamed(context, 'fuel_request_new');
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const FuelRequestNewPage()),
+          );
         },
         backgroundColor: const Color.fromARGB(255, 109, 108, 108),
         foregroundColor: const Color.fromARGB(255, 223, 221, 221),

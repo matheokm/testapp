@@ -188,7 +188,7 @@ class PendingFuelRequestPage extends StatelessWidget {
           },
         ),
       ),
-      drawer: const MenuWidget(),
+      drawer: MenuWidget(),
     );
   }
 }

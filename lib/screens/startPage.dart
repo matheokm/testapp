@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:testapp/screens/loginPage.dart';
+import 'package:testapp/utils/constants.dart';
+
+import '../widget/custom_button.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({super.key});
@@ -9,46 +13,40 @@ class StartPage extends StatelessWidget {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration:
-            const BoxDecoration(color: Color.fromARGB(255, 223, 221, 221)),
-        child: Column(children: [
-          const Padding(
-            padding: EdgeInsets.only(top: 150.0),
-            child: Image(
-              image: AssetImage('assets/logo.png'),
-              height: 270,
+        decoration: const BoxDecoration(
+          color: AppColors.backgroundColor,
+        ),
+        child: Column(
+          children: [
+            const Padding(
+              padding: EdgeInsets.only(top: 150.0),
+              child: Image(
+                image: AssetImage('assets/logo.png'),
+                height: 270,
+              ),
             ),
-          ),
-          const SizedBox(height: 25),
-          const Text('Bienvenido',
+            const SizedBox(height: 25),
+            const Text(
+              'Bienvenido',
               style: TextStyle(
-                  fontSize: 25, color: Color.fromRGBO(109, 108, 108, 1))),
-          const SizedBox(height: 25),
-          GestureDetector(
-            onTap: () {
-              Navigator.pushNamed(context, 'login');
-            },
-            child: Container(
-              height: 55,
-              width: 300,
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.horizontal(
-                    left: Radius.elliptical(10, 5),
-                    right: Radius.elliptical(10, 5)),
-                color: Color.fromARGB(255, 109, 108, 108),
-              ),
-              child: const Center(
-                child: Text(
-                  'Iniciar sesión',
-                  style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                      color: Colors.white),
-                ),
+                fontSize: 25,
+                color: AppColors.textColor,
               ),
             ),
-          )
-        ]),
+            const SizedBox(height: 25),
+            CustomButton(
+              text: 'Iniciar sesión',
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LoginPage(),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }
